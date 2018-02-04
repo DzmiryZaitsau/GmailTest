@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Gmail">
+	<test name="PositiveLogin">
+		<classes>
+			<class name="by.my.gmail.PositiveLoginTest"></class>
+		</classes>
+	</test>
+	<test name="NegativeTest">
+		<classes>
+			<class name="by.my.gmail.NegativeTest"></class>
+		</classes>
+	</test>
+	<test name="EbayTest">
+		<classes>
+			<class name="by.my.ebay.ProductTest"></class>
+		</classes>
+	</test>
+</suite>
