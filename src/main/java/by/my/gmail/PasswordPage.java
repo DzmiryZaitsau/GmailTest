@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PasswordPage extends LoginPage {
 	
@@ -28,15 +30,13 @@ public class PasswordPage extends LoginPage {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click()", submitPasswordButton);
 		return new InboxPage(driver);
 	}
+	
 	public boolean checkUncorrectPassword() {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click()", passwordField);
 		passwordField.sendKeys("123_soon123");
 		((JavascriptExecutor) driver).executeScript("arguments[0].click()", submitPasswordButton);
-		 try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		(new WebDriverWait(driver, 1))
+        .until(ExpectedConditions.textToBePresentInElement(undifined, "Неверный пароль"));
 		return undifined.getText().contains("Неверный пароль");
 	}
 
